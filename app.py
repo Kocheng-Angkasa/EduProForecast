@@ -94,5 +94,4 @@ def predict():
         data.to_csv('Student_Performance.csv', index=False)
         return render_template('result.html', prediction=predicted_performance_index[0],prediction2=rounded_performance_index, baris=shape[0], suggest=suggestion)
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
     app.run(debug=True)
