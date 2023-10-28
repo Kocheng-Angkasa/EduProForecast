@@ -1,0 +1,322 @@
+<!-- =========
+
+	Template Name: Play
+	Author: UIdeck
+	Author URI: https://uideck.com/
+	Support: https://uideck.com/support/
+	Version: 1.1
+
+========== -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduProForecast</title>
+
+<!--====== Favicon Icon ======-->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.svg') }}"
+      type="image/svg"
+    />
+
+    <!-- ===== All CSS files ===== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lineicons.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ud-styles.css') }}"/>
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
+<!-- DataTables Buttons Extension CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.css">
+
+<!-- jQuery JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery DataTables JavaScript -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<!-- DataTables Buttons Extension JavaScript -->
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.js"></script>
+<!-- DataTables Buttons HTML5 Export Extension JavaScript -->
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.js"></script>
+<!-- DataTables Buttons Print Extension JavaScript -->
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.js"></script>
+<!-- DataTables Buttons Copy Extension JavaScript -->
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.copy.js"></script>
+  </head>
+  <body>
+    <!-- ====== Header Start ====== -->
+    <header class="ud-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='images/logo/logo.svg') }}" alt="Logo" />
+              </a>
+              <button class="navbar-toggler">
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+              </button>
+
+                <div class="navbar-collapse">
+                <ul id="nav" class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a href="/#home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#features">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#faq">FAQ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#team">Team</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="navbar-btn d-none d-sm-inline-block">
+                <a class="ud-main-btn ud-white-btn" href="/input">
+                  Predict
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ====== Header End ====== -->
+
+    <!-- ====== Banner Start ====== -->
+    <section class="ud-page-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-banner-content">
+              <h1>Datasets</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Banner End ====== -->
+
+    <!-- ====== About Start ====== -->
+    <section id="about" class="ud-about">
+      <div class="container">
+        <div class="ud-about-wrapper wow fadeInUp" style="display: block !important;"  data-wow-delay=".2s">
+          <div class="ud-about-content-wrapper">
+    <table id="data-table" class="display">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Hours Studied</th>
+                <th>Previous Scores</th>
+                <th>Extracurricular Activities</th>
+                <th>Sleep Hours</th>
+                <th>Performance Index</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td></td>
+                <td>{{ row["Hours Studied"] }}</td>
+                <td>{{ row["Previous Scores"] }}</td>
+                <td>{{ row["Extracurricular Activities"] }}</td>
+                <td>{{ row["Sleep Hours"] }}</td>
+                <td>{{ row["Performance Index"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+              </br>
+            <p>Sumber : <a href="https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression/">https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression/</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== About End ====== -->
+
+
+ <!-- ====== Footer Start ====== -->
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+      <div class="shape shape-1">
+        <img src="{{ url_for('static', filename='images/footer/shape-1.svg') }}" alt="shape" />
+      </div>
+      <div class="shape shape-2">
+        <img src="{{ url_for('static', filename='images/footer/shape-2.svg') }}" alt="shape" />
+      </div>
+      <div class="shape shape-3">
+        <img src="{{ url_for('static', filename='images/footer/shape-3.svg') }}" alt="shape" />
+      </div>
+      <div class="ud-footer-widgets">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="ud-widget">
+                <a href="/" class="ud-footer-logo">
+                  <img src="{{ url_for('static', filename='images/logo/logoku.svg') }}"" alt="logo" />
+                </a>
+                <p class="ud-widget-desc">
+                  Brilliant Guide to Boost Student Performance.
+                </p>
+                <ul class="ud-widget-socials">
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">About Us</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a href="/#home">Home</a>
+                  </li>
+                  <li>
+                    <a href="/#features">Features</a>
+                  </li>
+                  <li>
+                    <a href="/#about">About</a>
+                  </li>
+                  <li>
+                    <a href="/#faq">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-8 col-sm-10">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">Thanks to</h5>
+                <ul class="ud-widget-brands">
+                  <li>
+                    <a
+                      href="https://ayroui.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/ayroui.svg') }}"
+                        alt="ayroui"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://ecommercehtml.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/ecommerce-html.svg') }}"
+                        alt="ecommerce-html"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://graygrids.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/graygrids.svg') }}"
+                        alt="graygrids"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://lineicons.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/lineicons.svg') }}"
+                        alt="lineicons"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://uideck.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/uideck.svg') }}"
+                        alt="uideck"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://tailwindtemplates.co/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/tailwindtemplates.svg') }}"
+                        alt="tailwindtemplates"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ud-footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4">
+              <p class="ud-footer-bottom-right">
+                This Template Designed and Developed by
+                <a href="https://uideck.com" rel="nofollow">UIdeck</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ====== Footer End ====== -->
+
+    <!-- ====== Back To Top Start ====== -->
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+    <!-- ====== Back To Top End ====== -->
+
+    <!-- ====== All Javascript Files ====== -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+                                                                <script>
+$(document).ready(function () {
+    var table = $('#data-table').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'excel', 'pdf', 'csv'
+        ]
+    });
+
+    table.on('order.dt search.dt', function () {
+        table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+});
+
+</script>
+  </body>
+</html>

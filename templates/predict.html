@@ -1,0 +1,391 @@
+<!-- =========
+
+	Template Name: Play
+	Author: UIdeck
+	Author URI: https://uideck.com/
+	Support: https://uideck.com/support/
+	Version: 1.1
+
+========== -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduProForecast</title>
+
+<!--====== Favicon Icon ======-->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.svg') }}"
+      type="image/svg"
+    />
+
+    <!-- ===== All CSS files ===== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lineicons.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ud-styles.css') }}"/>
+  </head>
+  <body>
+    <!-- ====== Header Start ====== -->
+    <header class="ud-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='images/logo/logo.svg') }}" alt="Logo" />
+              </a>
+              <button class="navbar-toggler">
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+              </button>
+
+                <div class="navbar-collapse">
+                <ul id="nav" class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a href="/#home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#features">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#faq">FAQ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/#team">Team</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="navbar-btn d-none d-sm-inline-block">
+                <a class="ud-main-btn ud-white-btn" href="/data">
+                  View Datasets
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ====== Header End ====== -->
+
+    <!-- ====== Banner Start ====== -->
+    <section class="ud-page-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-banner-content">
+              <h1>EduProForecast</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Banner End ====== -->
+
+    <!-- ====== Contact Start ====== -->
+    <section id="contact" class="ud-contact">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-8 col-lg-7">
+            <div class="ud-contact-content-wrapper">
+              <div class="ud-contact-title">
+                <span>Predict</span>
+                <h2>
+                  Ayo ketahui <br />
+                  peforma akademik anda !
+                </h2>
+              </div>
+              <div class="ud-contact-info-wrapper">
+                <div class="ud-single-info">
+                  <div class="ud-info-icon">
+                    <i class="lni lni-database"></i>
+                  </div>
+                  <div class="ud-info-meta">
+                    <h5>Our Data</h5>
+                    <p>Kami menggunakan {{ baris }} baris data</p>
+                    <p>agar prediski program semakin akurat</p>
+                  </div>
+                </div>
+                <div class="ud-single-info">
+                  <div class="ud-info-icon">
+                    <i class="lni lni-envelope"></i>
+                  </div>
+                  <div class="ud-info-meta">
+                    <h5>How Can We Help?</h5>
+                    <p>Anda dapat menghubungi</p>
+                    <p>melalui <a href="https://telegra.ph/Our-Contact-10-28">link ini</a>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-5">
+            <div
+              class="ud-contact-form-wrapper wow fadeInUp"
+              data-wow-delay=".2s"
+            >
+              <h3 class="ud-contact-form-title">Masukkan data anda</h3>
+              <form class="ud-contact-form" method="POST" action="/predict">
+                <div class="ud-form-group">
+                  <label for="hours_studied">Jumlah Jam Belajar*</label>
+                  <input
+                    type="text"
+                    name="hours_studied"
+                    placeholder="Berapa jam anda belajar ?"
+                    required
+                    pattern="[1-9]|10"
+                    title="Hanya masukkan angka dari 1 hingga 10"
+                  />
+                </div>
+                <div class="ud-form-group">
+                  <label for="previous_scores">Nilai Ujian Sebelumnya*</label>
+                  <input
+                    type="text"
+                    name="previous_scores"
+                    placeholder="Berapa nilai ujian anda sebelumnya ?"
+                    required
+                    pattern="^(10|[1-9][0-9]|100)$"
+                    title="Masukkan angka antara 10 dan 100"
+                  />
+                </div>
+                <div class="ud-form-group">
+                  <label style="margin-bottom: 10px;" for="extracurricular_activities">Keikutsertaan Ekstrakurikuler*</label>
+                  <select name="extracurricular_activities" class="form-select" required>
+                    <option value="">Pilih opsi</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+                <div class="ud-form-group">
+                  <label for="sleep_hours">Rata-rata Jam Tidur*</label>
+                  <input
+                    name="sleep_hours"
+                    type="text"
+                    placeholder="Berapa jam tidur harian Anda?"
+                    required
+                    pattern="[2-8]"
+                    title="Masukkan angka antara 2 dan 8"
+                  />
+                </div>
+                <div class="ud-form-group mb-0">
+                  <button type="submit" class="ud-main-btn" value="predict">
+                    Prediksi
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Contact End ====== -->
+ <!-- ====== Footer Start ====== -->
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+      <div class="shape shape-1">
+        <img src="{{ url_for('static', filename='images/footer/shape-1.svg') }}" alt="shape" />
+      </div>
+      <div class="shape shape-2">
+        <img src="{{ url_for('static', filename='images/footer/shape-2.svg') }}" alt="shape" />
+      </div>
+      <div class="shape shape-3">
+        <img src="{{ url_for('static', filename='images/footer/shape-3.svg') }}" alt="shape" />
+      </div>
+      <div class="ud-footer-widgets">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="ud-widget">
+                <a href="/" class="ud-footer-logo">
+                  <img src="{{ url_for('static', filename='images/logo/logoku.svg') }}"" alt="logo" />
+                </a>
+                <p class="ud-widget-desc">
+                  Brilliant Guide to Boost Student Academic Performance.
+                </p>
+                <ul class="ud-widget-socials">
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">About Us</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a href="/#home">Home</a>
+                  </li>
+                  <li>
+                    <a href="/#features">Features</a>
+                  </li>
+                  <li>
+                    <a href="/#about">About</a>
+                  </li>
+                  <li>
+                    <a href="/#faq">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-8 col-sm-10">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">Thanks to</h5>
+                <ul class="ud-widget-brands">
+                  <li>
+                    <a
+                      href="https://ayroui.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/ayroui.svg') }}"
+                        alt="ayroui"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://ecommercehtml.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/ecommerce-html.svg') }}"
+                        alt="ecommerce-html"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://graygrids.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/graygrids.svg') }}"
+                        alt="graygrids"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://lineicons.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/lineicons.svg') }}"
+                        alt="lineicons"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://uideck.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/uideck.svg') }}"
+                        alt="uideck"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://tailwindtemplates.co/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ url_for('static', filename='images/footer/brands/tailwindtemplates.svg') }}"
+                        alt="tailwindtemplates"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ud-footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4">
+              <p class="ud-footer-bottom-right">
+                This Template Designed and Developed by
+                <a href="https://uideck.com" rel="nofollow">UIdeck</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ====== Footer End ====== -->
+
+    <!-- ====== Back To Top Start ====== -->
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+    <!-- ====== Back To Top End ====== -->
+
+    <!-- ====== All Javascript Files ====== -->
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+      // ==== for menu scroll
+      const pageLink = document.querySelectorAll(".ud-menu-scroll");
+
+      pageLink.forEach((elem) => {
+        elem.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.querySelector(elem.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+            offsetTop: 1 - 60,
+          });
+        });
+      });
+
+      // section menu active
+      function onScroll(event) {
+        const sections = document.querySelectorAll(".ud-menu-scroll");
+        const scrollPos =
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          document.body.scrollTop;
+
+        for (let i = 0; i < sections.length; i++) {
+          const currLink = sections[i];
+          const val = currLink.getAttribute("href");
+          const refElement = document.querySelector(val);
+          const scrollTopMinus = scrollPos + 73;
+          if (
+            refElement.offsetTop <= scrollTopMinus &&
+            refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+          ) {
+            document
+              .querySelector(".ud-menu-scroll")
+              .classList.remove("active");
+            currLink.classList.add("active");
+          } else {
+            currLink.classList.remove("active");
+          }
+        }
+      }
+
+      window.document.addEventListener("scroll", onScroll);
+    </script>
+  </body>
+</html>
