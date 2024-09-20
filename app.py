@@ -50,7 +50,7 @@ def main3():
             }
             data.append(filtered_data)
 
-    return render_template('about.html', data=data)
+    return render_template('data.html', data=data)
 @app.route('/home')
 def main2():
     global data
